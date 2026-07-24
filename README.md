@@ -101,7 +101,7 @@ pack:
 
 ## System architecture
 
-![System architecture](/CIRCUIT DIAGRAM.png)
+![System architecture](CIRCUIT DIAGRAM.png)
 
 - **Hardware layer:** the battery pack and its sensors feed the ESP32 over
   I2C. The ESP32 computes derived metrics and uploads them to ThingSpeak.
