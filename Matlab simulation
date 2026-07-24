@@ -1,0 +1,52 @@
+1 . State of Charge in Battery : 
+
+function soc = calcSOC(energy_used, capacity_Ah, ~, efficiency)
+V_nom = 48;
+% Total battery energy in kWh
+total_energy = (V_nom * capacity_Ah) / 1000;
+% Usable energy considering efficiency
+usable_energy = total_energy * efficiency;
+% Convert Joules to kWh
+energy_used_kWh = energy_used / 3600000;
+% SOC equation
+soc = 100 * (1 - (energy_used_kWh / usable_energy));
+% Limit output
+soc = max(min(soc, 100), 0);
+end  
+
+
+2 . Distance to Empty :
+
+function dte = calcDTE(soc, ~)
+capacity_kWh = 1.92; % 48 V * 20 Ah / 1000
+eff_km_per_kWh = 25;
+remaining_kWh = (soc/100) * capacity_kWh;
+dte = remaining_kWh * eff_km_per_kWh;
+
+3 . TripCheck :
+
+function status = TripCheck(dte, destination_distance)
+if dte >= destination_distance
+    status = 1 ;   % Trip Possible
+else
+    status = 0;   % Trip NOT Possible
+end
+end
+
+
+4 . Templogic : 
+
+function [warning, station] = TempLogic(temp)
+
+if temp > 60
+    warning = 1;
+    station = 1;      % Suggest nearest EV charging station
+else
+    warning = 0;
+    station = 0;
+end
+
+end
+
+
+
