@@ -1,0 +1,58 @@
+% ---------------------------------------------------------
+% EV BATTERY DIGITAL TWIN CALCULATIONS (SOC, DTE, SOH)
+% ---------------------------------------------------------
+
+% 1. SETUP: Enter your Channel ID and API Keys
+readChannelID = 3435036;             % Your Channel ID
+readAPIKey    = 'VZ3XXXZP84KXEZVQ';  % Your Read API Key
+writeAPIKey   = 'M76PKKNXBO0M6OI8';  % Your Write API Key
+
+% 2. BATTERY SPECIFICATIONS
+MaxVoltage = 54.6;   % 100% Charge Voltage (V)
+MinVoltage = 39.0;   % 0% Charge Voltage (Cutoff V)
+BatteryCapacityWh = 480; % Total Energy in Wh
+AvgConsumption = 25;     % Wh per km
+
+% 3. READ DATA from ThingSpeak
+[data, time] = thingSpeakRead(readChannelID, 'Fields', [1,4], 'NumPoints', 1, 'ReadKey', readAPIKey);
+
+if isempty(data)
+    disp('No data read from channel.');
+    return;
+end
+
+currentVoltage = data(1); % Field 1: Voltage
+currentTemp = data(2);    % Field 4: Temperature
+
+% ---------------------------------------------------------
+% 4. CALCULATIONS
+% ---------------------------------------------------------
+
+% --- A. SOC ---
+soc_calc = ((currentVoltage - MinVoltage) / (MaxVoltage - MinVoltage)) * 100;
+soc_calc = max(0, min(100, soc_calc)); % Clamp between 0–100%
+
+% --- B. DTE ---
+remainingEnergy = BatteryCapacityWh * (soc_calc / 100);
+dte_calc = remainingEnergy / AvgConsumption;
+
+% --- C. SOH ---
+nominal_health = 100;
+if currentTemp > 35
+    degradation = (currentTemp - 35) * 0.5;
+    soh_calc = nominal_health - degradation;
+else
+    soh_calc = 100;
+end
+
+% ---------------------------------------------------------
+% 5. DISPLAY & WRITE RESULTS
+% ---------------------------------------------------------
+fprintf('Calculated SOC: %.2f %%\n', soc_calc);
+fprintf('Calculated DTE: %.2f km\n', dte_calc);
+fprintf('Calculated SOH: %.2f %%\n', soh_calc);
+
+thingSpeakWrite(readChannelID, [soc_calc, dte_calc, soh_calc], ...
+    'Fields', [5, 6, 7], 'WriteKey', writeAPIKey);
+
+disp('Channel updated successfully.');
