@@ -1,4 +1,4 @@
-# &#9889; EV Digital Twin - Battery Monitoring Dashboard
+# &#9889; Digital Twin System For EV Vechicles 
 
 A real-time **digital twin** for an electric-vehicle battery pack: an ESP32
 reads voltage, current, power and temperature from the physical pack,
