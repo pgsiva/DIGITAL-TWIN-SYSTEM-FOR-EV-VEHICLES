@@ -1,0 +1,28 @@
+# ===== Secrets =====
+firmware/**/config.h
+
+# ===== Java / Maven (backend) =====
+backend/**/target/
+backend/**/*.class
+backend/**/.mvn/wrapper/maven-wrapper.jar
+
+# ===== IDE =====
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# ===== Arduino / PlatformIO =====
+firmware/**/build/
+firmware/**/.pio/
+*.hex
+*.bin
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+*.log
