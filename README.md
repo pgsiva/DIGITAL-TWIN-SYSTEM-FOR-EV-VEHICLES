@@ -174,14 +174,6 @@ Digital-Twin/
 
 ---
 
-## Installation & usage
-
-### Prerequisites
-
-- Java 21+ and Maven (or use the included `mvnw` wrapper)
-- Arduino IDE 2.x with the ESP32 board package installed
-- A ThingSpeak account and channel (free tier is fine)
-- A modern web browser
 
 ### 1. Backend (Spring Boot API)
 
