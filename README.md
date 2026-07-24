@@ -14,7 +14,7 @@ instrument cluster.
 
 | Name | Role | GitHub |
 |------|------|--------|
-| NENESH RAJ.T | THINK SPEAK | https://github.com/Neneshraj |
+| NENESH RAJ.T | THINK SPEAK MATLAB| https://github.com/Neneshraj |
 | KABILESH.S | COMPONENTS CONNECTION CODING | https://github.com/kabi03093-lgtm |
 | JAGAN.C | FRONTEND AND BACKEND DEVELOPMENT | https://github.com/Jagan-lap |
 | SIVA KUMAR P.G | FRONTEND AND BACKEND DEVELOPMENT | https://github.com/pgsiva |
