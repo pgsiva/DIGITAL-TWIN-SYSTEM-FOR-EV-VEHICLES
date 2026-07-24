@@ -1,0 +1,52 @@
+EV DIGITAL TWIN - FLAT FILE MANIFEST
+======================================
+
+This zip has NO subfolders - every file is flattened into one folder.
+The '__' in each filename marks where a folder separator used to be.
+To rebuild the real project structure (needed for the Java backend
+and for the frontend's relative links to work), on GitHub.com:
+
+  1. Click 'Add file' -> 'Create new file' in your repo.
+  2. In the filename box, type the FULL PATH shown below (e.g.
+     'frontend/home-page/index.html') - GitHub creates the folders
+     automatically as you type the '/'.
+  3. Paste in the contents of the matching flattened file.
+
+Or, if you have any terminal access (even Termux/Codespaces), unzip
+this file and run the included rebuild.sh to recreate the folders
+automatically in one step.
+
+FLATTENED FILE NAME  ->  ORIGINAL PATH IN REPO
+-----------------------------------------------
+.gitignore  ->  .gitignore
+GIT_WORKFLOW.md  ->  GIT_WORKFLOW.md
+LICENSE  ->  LICENSE
+README.md  ->  README.md
+backend__digitaltwinbackend__.gitattributes  ->  backend/digitaltwinbackend/.gitattributes
+backend__digitaltwinbackend__.gitignore  ->  backend/digitaltwinbackend/.gitignore
+backend__digitaltwinbackend__.mvn__wrapper__maven-wrapper.properties  ->  backend/digitaltwinbackend/.mvn/wrapper/maven-wrapper.properties
+backend__digitaltwinbackend__HELP.md  ->  backend/digitaltwinbackend/HELP.md
+backend__digitaltwinbackend__mvnw  ->  backend/digitaltwinbackend/mvnw
+backend__digitaltwinbackend__mvnw.cmd  ->  backend/digitaltwinbackend/mvnw.cmd
+backend__digitaltwinbackend__pom.xml  ->  backend/digitaltwinbackend/pom.xml
+backend__digitaltwinbackend__src__main__java__com__digitaltwin__digitaltwinbackend__DigitaltwinbackendApplication.java  ->  backend/digitaltwinbackend/src/main/java/com/digitaltwin/digitaltwinbackend/DigitaltwinbackendApplication.java
+backend__digitaltwinbackend__src__main__java__com__digitaltwin__digitaltwinbackend__controller__BatteryController.java  ->  backend/digitaltwinbackend/src/main/java/com/digitaltwin/digitaltwinbackend/controller/BatteryController.java
+backend__digitaltwinbackend__src__main__java__com__digitaltwin__digitaltwinbackend__model__BatteryData.java  ->  backend/digitaltwinbackend/src/main/java/com/digitaltwin/digitaltwinbackend/model/BatteryData.java
+backend__digitaltwinbackend__src__main__java__com__digitaltwin__digitaltwinbackend__service__BatteryService.java  ->  backend/digitaltwinbackend/src/main/java/com/digitaltwin/digitaltwinbackend/service/BatteryService.java
+backend__digitaltwinbackend__src__main__resources__application.properties  ->  backend/digitaltwinbackend/src/main/resources/application.properties
+backend__digitaltwinbackend__src__test__java__com__digitaltwin__digitaltwinbackend__DigitaltwinbackendApplicationTests.java  ->  backend/digitaltwinbackend/src/test/java/com/digitaltwin/digitaltwinbackend/DigitaltwinbackendApplicationTests.java
+demo__.gitkeep  ->  demo/.gitkeep
+docs__diagrams__battery-pack-scaling-v2.svg  ->  docs/diagrams/battery-pack-scaling-v2.svg
+docs__diagrams__circuit-wiring-v1.svg  ->  docs/diagrams/circuit-wiring-v1.svg
+docs__diagrams__system-architecture.svg  ->  docs/diagrams/system-architecture.svg
+docs__diagrams__workflow-flowchart.svg  ->  docs/diagrams/workflow-flowchart.svg
+docs__screenshots__.gitkeep  ->  docs/screenshots/.gitkeep
+firmware__EV_Digital_Twin_Firmware__EV_Digital_Twin_Firmware.ino  ->  firmware/EV_Digital_Twin_Firmware/EV_Digital_Twin_Firmware.ino
+firmware__EV_Digital_Twin_Firmware__config.example.h  ->  firmware/EV_Digital_Twin_Firmware/config.example.h
+firmware__README.md  ->  firmware/README.md
+frontend__home-page__index.html  ->  frontend/home-page/index.html
+frontend__home-page__script.js  ->  frontend/home-page/script.js
+frontend__home-page__style.css  ->  frontend/home-page/style.css
+frontend__status-page__index.html  ->  frontend/status-page/index.html
+frontend__status-page__script.js  ->  frontend/status-page/script.js
+frontend__status-page__style.css  ->  frontend/status-page/style.css

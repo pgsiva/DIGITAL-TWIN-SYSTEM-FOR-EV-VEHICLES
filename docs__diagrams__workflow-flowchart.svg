@@ -1,0 +1,60 @@
+<svg viewBox="0 0 1000 760" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial">
+<rect x="0" y="0" width="1000" height="760" fill="#0b1220"/>
+<defs>
+  <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+    <polygon points="0 0, 10 4, 0 8" fill="#6b7785"/>
+  </marker>
+</defs>
+<text x="500.0" y="32" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">End-to-End Workflow</text>
+<text x="250" y="58" font-size="14" font-weight="600" fill="#0f9d58" text-anchor="middle">FIRMWARE (ESP32)</text>
+<text x="750" y="58" font-size="14" font-weight="600" fill="#f9a825" text-anchor="middle">FRONTEND (BROWSER)</text>
+<line x1="500" y1="45" x2="500" y2="740" stroke="#2a3548" stroke-width="1.5" stroke-dasharray="4,4"/>
+<rect x="100.0" y="90" width="300" height="55" rx="10" fill="#0f9d58" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="250.0" y="122.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Boot &amp; connect WiFi</text>
+<rect x="100.0" y="180" width="300" height="55" rx="10" fill="#0f9d58" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="250.0" y="212.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Init ADS1115 / INA219 / MCP9808</text>
+<line x1="250" y1="145" x2="250" y2="180" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="100.0" y="270" width="300" height="55" rx="10" fill="#0f9d58" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="250.0" y="302.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Read voltage, current, power, temp</text>
+<line x1="250" y1="235" x2="250" y2="270" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="100.0" y="360" width="300" height="55" rx="10" fill="#0f9d58" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="250.0" y="392.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Compute SOC, SOH, DTE</text>
+<line x1="250" y1="325" x2="250" y2="360" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="100.0" y="450" width="300" height="55" rx="10" fill="#0f9d58" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="250.0" y="482.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Print to Serial Monitor</text>
+<line x1="250" y1="415" x2="250" y2="450" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="100.0" y="540" width="300" height="55" rx="10" fill="#37474f" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="250.0" y="572.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">WiFi connected?</text>
+<line x1="250" y1="505" x2="250" y2="540" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="100.0" y="630" width="300" height="55" rx="10" fill="#8e24aa" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="250.0" y="662.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">POST fields to ThingSpeak</text>
+<line x1="250" y1="595" x2="250" y2="630" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="100.0" y="720" width="300" height="55" rx="10" fill="#0f9d58" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="250.0" y="752.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Wait 15s, repeat loop</text>
+<line x1="250" y1="685" x2="250" y2="720" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<line x1="250" y1="765" x2="250" y2="720" stroke="#6b7785" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+<rect x="236.8" y="722.5" width="26.4" height="16" fill="#0d1b2a" opacity="0.85" rx="3"/>
+<text x="250.0" y="734.5" font-family="Segoe UI, Arial" font-size="11" fill="#cfd8e3" text-anchor="middle">loop</text>
+<rect x="600.0" y="90" width="300" height="55" rx="10" fill="#f9a825" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="750.0" y="122.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Load dashboard page</text>
+<rect x="600.0" y="190" width="300" height="55" rx="10" fill="#f9a825" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="750.0" y="222.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">fetch('/battery') every 1s</text>
+<line x1="750" y1="145" x2="750" y2="190" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="600.0" y="290" width="300" height="55" rx="10" fill="#f9a825" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="750.0" y="314.25" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Receive JSON</text>
+<text x="750.0" y="329.85" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">(%, km, %, degC)</text>
+<line x1="750" y1="245" x2="750" y2="290" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="600.0" y="390" width="300" height="55" rx="10" fill="#f9a825" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="750.0" y="414.25" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Map value -&gt; color state</text>
+<text x="750.0" y="429.85" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">(green / yellow / red)</text>
+<line x1="750" y1="345" x2="750" y2="390" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="600.0" y="490" width="300" height="55" rx="10" fill="#f9a825" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="750.0" y="522.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Animate gauges &amp; digits</text>
+<line x1="750" y1="445" x2="750" y2="490" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<rect x="600.0" y="590" width="300" height="55" rx="10" fill="#37474f" stroke="#0d1b2a" stroke-width="1.5"/>
+<text x="750.0" y="622.05" font-family="Segoe UI, Arial" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Repeat every 1000ms</text>
+<line x1="750" y1="545" x2="750" y2="590" stroke="#6b7785" stroke-width="2"  marker-end="url(#arrowhead)"/>
+<line x1="750" y1="605" x2="750" y2="90" stroke="#6b7785" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+<rect x="707.1" y="327.5" width="85.8" height="16" fill="#0d1b2a" opacity="0.85" rx="3"/>
+<text x="750.0" y="339.5" font-family="Segoe UI, Arial" font-size="11" fill="#cfd8e3" text-anchor="middle">interval loop</text>
+</svg>

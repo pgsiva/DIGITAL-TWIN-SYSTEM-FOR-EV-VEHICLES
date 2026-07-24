@@ -1,0 +1,297 @@
+/* ==========================================================================
+   SYSTEM ARCHITECTURE STYLING (EV DASHBOARD COCKPIT)
+   ========================================================================== */
+
+/* Universal Reset & Performance Optimization */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    /* Pure Automotive Theme Hex Map */
+    --bg-main: #06090f;
+    --bg-card: rgba(13, 20, 34, 0.45);
+    --border-card: rgba(255, 255, 255, 0.07);
+    --font-primary: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    
+    /* Global Status Matrix colors */
+    --neon-green: #00f5d4;
+    --neon-yellow: #ffb703;
+    --neon-red: #ff0055;
+    
+    /* Standard Fallback Definition updated dynamically via JS runtime */
+    --state-color: var(--neon-green);
+    --state-glow: rgba(0, 245, 212, 0.25);
+}
+
+body {
+    background-color: var(--bg-main);
+    background-image: 
+        radial-gradient(circle at 50% 50%, #0d1626 0%, var(--bg-main) 80%),
+        radial-gradient(circle at 50% 0%, rgba(0, 245, 212, 0.05) 0%, transparent 50%);
+    font-family: var(--font-primary);
+    color: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Perfect 2x2 Screen Space Subdivision Matrix */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: 100vw;
+    height: 100vh;
+    padding: 24px;
+    gap: 20px;
+}
+
+/* ==========================================================================
+   GLASSMORPHISM CARD STYLING & FX MATRIX
+   ========================================================================== */
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(25px) saturate(130%);
+    -webkit-backdrop-filter: blur(25px) saturate(130%);
+    border: 1px solid var(--border-card);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: border-color 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Top Subtle Horizon Reflection Element */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
+
+/* State Driven Color Modifications (Dynamic Variable Mapping Injection) */
+.card.state-green {
+    --state-color: var(--neon-green);
+    --state-glow: rgba(0, 245, 212, 0.3);
+}
+.card.state-yellow {
+    --state-color: var(--neon-yellow);
+    --state-glow: rgba(255, 183, 3, 0.3);
+}
+.card.state-red {
+    --state-color: var(--neon-red);
+    --state-glow: rgba(255, 0, 85, 0.3);
+}
+
+/* Enhanced Inner Glow Based on Global Color Matrix Hooks */
+.card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 25px 55px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(0, 0, 0, 0.2),
+        inset 0 0 15px var(--state-glow);
+}
+
+/* ==========================================================================
+   HEADER ELEMENTS (Anti-Collapse & Z-Index Protection)
+   ========================================================================== */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 15%;
+    position: relative;
+    z-index: 10;
+}
+
+.card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: #f1f3f5;
+    margin-top: 2px;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    color: var(--state-color);
+    filter: drop-shadow(0 0 8px var(--state-color));
+    transition: color 0.5s ease, filter 0.5s ease;
+}
+
+/* Icon Specific Internals Modification */
+#icon-battery-fill {
+    transition: fill 0.5s ease, width 0.5s ease;
+}
+
+#icon-temp-mercury {
+    transition: stroke 0.5s ease, d 0.5s ease;
+}
+
+/* ==========================================================================
+   CARD BODY LAYOUT & GAUGE METRICS (Spacing & Scaling Matrix)
+   ========================================================================== */
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 80%;
+    width: 100%;
+    margin-top: 12px;
+    position: relative;
+}
+
+.gauge-wrapper {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+}
+
+.analog-gauge {
+    width: 100%;
+    height: auto;
+    max-height: 145px;
+    display: block;
+}
+
+/* Gauge Internal Elements Vector Specifications */
+.gauge-track {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 0;
+}
+
+.gauge-progress {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400; 
+    filter: drop-shadow(0 0 6px var(--state-color));
+    transition: stroke-dashoffset 0.6s cubic-bezier(0.25, 1, 0.5, 1), stroke 0.5s ease;
+}
+
+.gauge-ticks line {
+    stroke: rgba(255, 255, 255, 0.15);
+    stroke-width: 1.5px;
+}
+
+.gauge-label {
+    fill: rgba(255, 255, 255, 0.3);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.gauge-label.anchor-mid { text-anchor: middle; }
+.gauge-label.anchor-end { text-anchor: end; }
+
+/* Automotive Needle Control Matrix */
+.needle-group {
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform-origin: 110px 110px;
+}
+
+.needle-group path {
+    filter: drop-shadow(0 0 4px var(--state-color));
+    transition: fill 0.5s ease;
+}
+
+/* ==========================================================================
+   DIGITAL READOUT SYSTEMS
+   ========================================================================== */
+.readout-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 16px;
+}
+
+.digital-display {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.digital-number {
+    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: -2px;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.digital-unit {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 4px;
+    letter-spacing: 0px;
+}
+
+/* High-End Automotive Safety Status Badges */
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--state-color);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 10px var(--state-glow);
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (DESKTOP, LAPTOP, & MOBILE FALLBACK MATRIX)
+   ========================================================================== */
+@media (max-width: 1400px) {
+    .digital-number { font-size: 3rem; }
+    .analog-gauge { max-height: 130px; }
+}
+
+@media (max-width: 1200px) {
+    .digital-number { font-size: 2.6rem; }
+    .card-title { font-size: 1.15rem; }
+    .analog-gauge { max-height: 115px; }
+}
+
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        overflow-y: auto;
+        height: auto;
+    }
+    body { overflow: auto; }
+    .card { height: 250px; }
+    .analog-gauge { max-height: 140px; }
+}

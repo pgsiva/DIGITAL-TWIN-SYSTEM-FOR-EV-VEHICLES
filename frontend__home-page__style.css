@@ -1,0 +1,176 @@
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Background */
+
+.Home{
+
+    min-height:100vh;
+    width:100%;
+
+    background-image:url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    padding:30px;
+
+}
+
+/* Dark Overlay */
+
+.Home::before{
+
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.55);
+
+    z-index:0;
+
+}
+
+/* Content */
+
+.container-fluid{
+
+    position:relative;
+    z-index:1;
+
+}
+
+/* Heading */
+
+.Heading{
+
+    color:white;
+    font-size:55px;
+    font-weight:bold;
+    font-style:italic;
+    text-shadow:3px 3px 8px black;
+
+}
+
+/* Card */
+
+.app-card{
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.3);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    transition:0.4s;
+
+    cursor:pointer;
+
+}
+
+.app-card:hover{
+
+    transform:translateY(-10px);
+
+    background:rgba(255,255,255,0.25);
+
+    box-shadow:0px 10px 25px rgba(0,0,0,0.6);
+
+}
+
+/* Images */
+
+.App-image{
+
+    width:100px;
+    height:100px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+}
+
+/* Name */
+
+.app-name{
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    margin-top:15px;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+.app-link{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+/* Tablet */
+
+@media(max-width:768px){
+
+    .Heading{
+
+        font-size:40px;
+
+    }
+
+    .App-image{
+
+        width:80px;
+        height:80px;
+
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:576px){
+
+    .Heading{
+
+        font-size:30px;
+
+    }
+
+    .App-image{
+
+        width:70px;
+        height:70px;
+
+    }
+
+    .app-name{
+
+        font-size:16px;
+
+    }
+
+    .Home{
+
+        padding:15px;
+
+        background-attachment:scroll;
+
+    }
+
+}

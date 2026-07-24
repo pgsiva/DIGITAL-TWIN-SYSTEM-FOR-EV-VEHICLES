@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic EV Battery Digital Twin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- TOP LEFT: BATTERY PERCENTAGE -->
+        <section class="card" id="battery-card">
+            <div class="card-header">
+                <div class="title-group">
+                    <span class="card-label">SYSTEM STATE</span>
+                    <h2 class="card-title">Battery Capacity</h2>
+                </div>
+                <!-- Custom EV Dynamic Battery Icon -->
+                <svg class="icon icon-battery" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="6" width="16" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <path d="M22 10V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <rect id="icon-battery-fill" x="5" y="9" width="10" height="6" fill="currentColor"/>
+                </svg>
+            </div>
+            
+            <div class="card-body">
+                <div class="gauge-wrapper">
+                    <svg class="analog-gauge" viewBox="0 0 220 220">
+                        <defs>
+                            <radialGradient id="battery-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="var(--state-color)" stop-opacity="0.15" />
+                                <stop offset="100%" stop-color="var(--state-color)" stop-opacity="0" />
+                            </radialGradient>
+                        </defs>
+                        <!-- Ambient Gauge Glow Ring -->
+                        <circle cx="110" cy="110" r="85" fill="url(#battery-glow)" />
+                        <!-- Background Outer Track -->
+                        <path class="gauge-track" d="M 50 175 A 85 85 0 1 1 170 175" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8" stroke-linecap="round"/>
+                        <!-- Dynamic Progress Arc -->
+                        <path id="battery-arc" class="gauge-progress" d="M 50 175 A 85 85 0 1 1 170 175" fill="none" stroke="var(--state-color)" stroke-width="8" stroke-linecap="round"/>
+                        
+                        <!-- Automotive Tick Marks -->
+                        <g class="gauge-ticks">
+                            <!-- Generated structurally via rotation transforms -->
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(-120 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(-90 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(-60 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(-30 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="25" transform="rotate(0 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(30 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(60 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(90 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(120 110 110)" />
+                        </g>
+                        
+                        <!-- Gauge Labels -->
+                        <text x="45" y="190" class="gauge-label">0%</text>
+                        <text x="110" y="38" class="gauge-label anchor-mid">50%</text>
+                        <text x="175" y="190" class="gauge-label anchor-end">100%</text>
+                        
+                        <!-- Center Hub and Needle Group -->
+                        <g id="battery-needle-group" class="needle-group">
+                            <path d="M 106 110 L 110 28 L 114 110 Z" fill="var(--state-color)" />
+                            <circle cx="110" cy="110" r="8" fill="#111622" stroke="var(--state-color)" stroke-width="3"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <div class="readout-wrapper">
+                    <div class="digital-display">
+                        <span id="battery-value" class="digital-number">0</span>
+                        <span class="digital-unit">%</span>
+                    </div>
+                    <div id="battery-status" class="status-badge">INITIALIZING</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOP RIGHT: REMAINING RANGE -->
+        <section class="card" id="range-card">
+            <div class="card-header">
+                <div class="title-group">
+                    <span class="card-label">PREDICTION ENGINE</span>
+                    <h2 class="card-title">Remaining Range</h2>
+                </div>
+                <!-- Custom Modern EV Car Icon -->
+                <svg class="icon icon-range" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2F 15H22F" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M4 15C4 12 6 11 9 11H17C20 11 21 13 21 15H4Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="7.5" cy="16.5" r="2.5" fill="#080b11" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="16.5" cy="16.5" r="2.5" fill="#080b11" stroke="currentColor" stroke-width="2"/>
+                    <path d="M14 7L11 10H15L12 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            
+            <div class="card-body">
+                <div class="gauge-wrapper">
+                    <svg class="analog-gauge" viewBox="0 0 220 220">
+                        <defs>
+                            <radialGradient id="range-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="var(--state-color)" stop-opacity="0.15" />
+                                <stop offset="100%" stop-color="var(--state-color)" stop-opacity="0" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="110" cy="110" r="85" fill="url(#range-glow)" />
+                        <path class="gauge-track" d="M 50 175 A 85 85 0 1 1 170 175" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8" stroke-linecap="round"/>
+                        <path id="range-arc" class="gauge-progress" d="M 50 175 A 85 85 0 1 1 170 175" fill="none" stroke="var(--state-color)" stroke-width="8" stroke-linecap="round"/>
+                        
+                        <g class="gauge-ticks">
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(-120 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(-90 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(-60 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(-30 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="25" transform="rotate(0 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(30 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(60 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(90 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(120 110 110)" />
+                        </g>
+                        
+                        <text x="45" y="190" class="gauge-label">0 KM</text>
+                        <text x="110" y="38" class="gauge-label anchor-mid">250</text>
+                        <text x="175" y="190" class="gauge-label anchor-end">500 KM</text>
+                        
+                        <g id="range-needle-group" class="needle-group">
+                            <path d="M 106 110 L 110 28 L 114 110 Z" fill="var(--state-color)" />
+                            <circle cx="110" cy="110" r="8" fill="#111622" stroke="var(--state-color)" stroke-width="3"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <div class="readout-wrapper">
+                    <div class="digital-display">
+                        <span id="range-value" class="digital-number">0</span>
+                        <span class="digital-unit">KM</span>
+                    </div>
+                    <div id="range-status" class="status-badge">INITIALIZING</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM LEFT: BATTERY HEALTH (SOH) -->
+        <section class="card" id="health-card">
+            <div class="card-header">
+                <div class="title-group">
+                    <span class="card-label">DIAGNOSTICS</span>
+                    <h2 class="card-title">State of Health (SoH)</h2>
+                </div>
+                <!-- Custom Battery with Shield Icon -->
+                <svg class="icon icon-health" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M9 11L11 13L15 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            
+            <div class="card-body">
+                <div class="gauge-wrapper">
+                    <svg class="analog-gauge" viewBox="0 0 220 220">
+                        <defs>
+                            <radialGradient id="health-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="var(--state-color)" stop-opacity="0.15" />
+                                <stop offset="100%" stop-color="var(--state-color)" stop-opacity="0" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="110" cy="110" r="85" fill="url(#health-glow)" />
+                        <path class="gauge-track" d="M 50 175 A 85 85 0 1 1 170 175" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8" stroke-linecap="round"/>
+                        <path id="health-arc" class="gauge-progress" d="M 50 175 A 85 85 0 1 1 170 175" fill="none" stroke="var(--state-color)" stroke-width="8" stroke-linecap="round"/>
+                        
+                        <g class="gauge-ticks">
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(-120 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(-90 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(-60 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(-30 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="25" transform="rotate(0 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(30 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(60 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(90 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(120 110 110)" />
+                        </g>
+                        
+                        <text x="45" y="190" class="gauge-label">0%</text>
+                        <text x="110" y="38" class="gauge-label anchor-mid">50%</text>
+                        <text x="175" y="190" class="gauge-label anchor-end">100%</text>
+                        
+                        <g id="health-needle-group" class="needle-group">
+                            <path d="M 106 110 L 110 28 L 114 110 Z" fill="var(--state-color)" />
+                            <circle cx="110" cy="110" r="8" fill="#111622" stroke="var(--state-color)" stroke-width="3"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <div class="readout-wrapper">
+                    <div class="digital-display">
+                        <span id="health-value" class="digital-number">0</span>
+                        <span class="digital-unit">%</span>
+                    </div>
+                    <div id="health-status" class="status-badge">INITIALIZING</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM RIGHT: BATTERY TEMPERATURE -->
+        <section class="card" id="temp-card">
+            <div class="card-header">
+                <div class="title-group">
+                    <span class="card-label">THERMAL DYNAMICS</span>
+                    <h2 class="card-title">Core Temperature</h2>
+                </div>
+                <!-- Custom Thermometer Icon with Dynamic Mercury Level -->
+                <svg class="icon icon-temp" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Liquid Level Representation Inside Icon -->
+                    <circle cx="12" cy="17" r="2" fill="currentColor"/>
+                    <path id="icon-temp-mercury" d="M12 15V9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            
+            <div class="card-body">
+                <div class="gauge-wrapper">
+                    <svg class="analog-gauge" viewBox="0 0 220 220">
+                        <defs>
+                            <radialGradient id="temp-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="var(--state-color)" stop-opacity="0.15" />
+                                <stop offset="100%" stop-color="var(--state-color)" stop-opacity="0" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="110" cy="110" r="85" fill="url(#temp-glow)" />
+                        <path class="gauge-track" d="M 50 175 A 85 85 0 1 1 170 175" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8" stroke-linecap="round"/>
+                        <path id="temp-arc" class="gauge-progress" d="M 50 175 A 85 85 0 1 1 170 175" fill="none" stroke="var(--state-color)" stroke-width="8" stroke-linecap="round"/>
+                        
+                        <g class="gauge-ticks">
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(-120 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(-90 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(-60 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(-30 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="25" transform="rotate(0 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(30 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(60 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="21" transform="rotate(90 110 110)" />
+                            <line x1="110" y1="15" x2="110" y2="23" transform="rotate(120 110 110)" />
+                        </g>
+                        
+                        <text x="45" y="190" class="gauge-label">0°C</text>
+                        <text x="110" y="38" class="gauge-label anchor-mid">50°C</text>
+                        <text x="175" y="190" class="gauge-label anchor-end">100°C</text>
+                        
+                        <g id="temp-needle-group" class="needle-group">
+                            <path d="M 106 110 L 110 28 L 114 110 Z" fill="var(--state-color)" />
+                            <circle cx="110" cy="110" r="8" fill="#111622" stroke="var(--state-color)" stroke-width="3"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <div class="readout-wrapper">
+                    <div class="digital-display">
+                        <span id="temp-value" class="digital-number">0</span>
+                        <span class="digital-unit">°C</span>
+                    </div>
+                    <div id="temp-status" class="status-badge">INITIALIZING</div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
