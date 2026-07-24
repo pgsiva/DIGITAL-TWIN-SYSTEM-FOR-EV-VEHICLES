@@ -14,10 +14,14 @@ instrument cluster.
 
 | Name | Role | GitHub |
 |------|------|--------|
-| _add name_ | Team Lead / Firmware | _@handle_ |
-| _add name_ | Backend (Spring Boot) | _@handle_ |
-| _add name_ | Frontend (Dashboard UI) | _@handle_ |
-| _add name_ | Hardware / Circuit Design | _@handle_ |
+| NENESH RAJ.T | THINK SPEAK |
+| KABILESH.S | COMPONENTS CONNECTION CODEING |
+| JAGAN.C | FRONTEND AND BACKEND DEVELOPMENT |
+| SIVA KUMAR P.G | FRONTEND AND BACKEND DEVELOPMENT |
+| AKILA DEVI.S | Hardware / Circuit Design  |
+| BARKAVI.P | Hardware / Circuit Design  |
+
+
 
 > Fill in your actual team name, member names, roles and GitHub handles here
 > before submission.
