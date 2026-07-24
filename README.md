@@ -255,7 +255,7 @@ the 7-field mapping the firmware writes to ThingSpeak.
 | Diagram | Purpose |
 |---------|---------|
 | ![circuit](circuit.jpeg) | **Version 1** - 12V single-pack prototype wiring (ADS1115 divider, INA219, MCP9808, ESP32 I2C bus) |
-| ![pack-scaling](docs/diagrams/battery-pack-scaling-v2.svg) | **Version 2** - Scaling to 4 &times; 11.1V sub-packs (44.4V) with per-pack MOSFET fault isolation and 4-channel voltage sensing |
+| ![pack-scaling](packscaling.jpg) | **Version 2** - Scaling to 4 &times; 11.1V sub-packs (44.4V) with per-pack MOSFET fault isolation and 4-channel voltage sensing |
 
 Full bill of materials, resistor values and library list live in
 [`firmware/README.md`](firmware/README.md).
