@@ -14,12 +14,12 @@ instrument cluster.
 
 | Name | Role | GitHub |
 |------|------|--------|
-| NENESH RAJ.T | THINK SPEAK |
-| KABILESH.S | COMPONENTS CONNECTION CODEING |
-| JAGAN.C | FRONTEND AND BACKEND DEVELOPMENT |
-| SIVA KUMAR P.G | FRONTEND AND BACKEND DEVELOPMENT |
-| AKILA DEVI.S | Hardware / Circuit Design  |
-| BARKAVI.P | Hardware / Circuit Design  |
+| NENESH RAJ.T | THINK SPEAK | https://github.com/Neneshraj |
+| KABILESH.S | COMPONENTS CONNECTION CODEING | https://github.com/kabi03093-lgtm |
+| JAGAN.C | FRONTEND AND BACKEND DEVELOPMENT | https://github.com/Jagan-lap |
+| SIVA KUMAR P.G | FRONTEND AND BACKEND DEVELOPMENT | https://github.com/pgsiva |
+| AKILA DEVI.S | Hardware / Circuit Design  | https://github.com/Akilasurendran01 |
+| BARKAVI.P | Hardware / Circuit Design  | https://github.com/barkavi075-p |
 
 
 
