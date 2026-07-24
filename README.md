@@ -101,7 +101,7 @@ pack:
 
 ## System architecture
 
-![System architecture](docs/diagrams/system-architecture.svg)
+![System architecture](CIRCUIT DIAGRAM.png)
 
 - **Hardware layer:** the battery pack and its sensors feed the ESP32 over
   I2C. The ESP32 computes derived metrics and uploads them to ThingSpeak.
@@ -118,7 +118,7 @@ pack:
 
 ## Workflow
 
-![Workflow flowchart](docs/diagrams/workflow-flowchart.svg)
+![Workflow flowchart](FLOWDIAGRAM.png)
 
 **Firmware loop:** connect Wi-Fi &rarr; initialise sensors &rarr; read
 voltage/current/power/temperature &rarr; compute SOC/SOH/DTE &rarr; print to
